@@ -1,0 +1,14 @@
+.meter-box {
+  height: 150px;
+  width: 50px;
+  border: solid 2px red;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.level {
+  background-color: red;
+  height: 1%;
+  width: 100%;
+}
