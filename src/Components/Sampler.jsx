@@ -24,7 +24,7 @@ function Sampler({ file, note, trigger, release }) {
 
   useEffect(() => {
     const handleKeyDown = event => {
-      if (event.key === trigger) Sampler.triggerAttack(note);
+      if (event.key === trigger && !event.repeat) Sampler.triggerAttack(note);
     };
     const handleKeyUp = event => {
       if (event.key === trigger) Sampler.triggerRelease(note);
