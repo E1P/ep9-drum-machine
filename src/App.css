@@ -12,15 +12,28 @@
   height: 100vh;
 }
 
-button {
-  height: 20px;
-}
-
-.channel {
+.sampler {
   box-shadow: 5px 5px 5px lightgrey;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
   height: 200px;
+  padding: 3px;
+}
+
+.audition {
+  /* background-color: green; */
+  /* height: 15px; */
+  /* width: 15px; */
+  /* border-color: green; */
+  border-left: 10px solid green;
+  border-top: 7px solid transparent;
+  border-bottom: 8px solid transparent;
+  /* border-right: 0px solid green; */
+  /* border-top */
+}
+
+.playing {
+  border-left-color: red;
 }
