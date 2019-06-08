@@ -34,6 +34,6 @@
   /* border-top */
 }
 
-.playing {
+.audition:active {
   border-left-color: red;
 }
