@@ -2,42 +2,40 @@ import React, { useState, useEffect } from "react";
 import Tone from "tone";
 import LevelMeter from "./LevelMeter";
 
-function Sampler({ file, note, trigger }) {
+function Sampler({ file, note, trigger, release }) {
   const [amplitude, setAmplitude] = useState(-50);
   const [Sampler, setSampler] = useState(null);
   const [Meter, setMeter] = useState(null);
   const [samplerLoaded, setSamplerLoaded] = useState(false);
-  const [playing, setPlaying] = useState(false);
+  // const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
-    // console.log("Sampler useEffect triggered...");
     const createSampler = () => {
       setSampler(new Tone.Sampler({ [note]: `./beat-radar-sounds/${file}.wav` }, setSamplerLoaded(true)).toMaster());
     };
-
-    !samplerLoaded && createSampler();
-  }, [file, note, samplerLoaded]);
-
-  useEffect(() => {
-    // console.log("Meter useEffect triggered...");
     const connectSampler = () => {
       const meter = new Tone.Meter();
       setMeter(meter);
       Sampler.connect(meter);
     };
+    !samplerLoaded && createSampler();
     samplerLoaded && !Meter && connectSampler();
-  }, [Sampler, Meter, samplerLoaded]);
+  }, [Sampler, Meter, file, note, samplerLoaded]);
 
   useEffect(() => {
-    if (!playing && trigger) {
-      Sampler.triggerAttack(note);
-      setPlaying(true);
-    }
-    if (playing && !trigger) {
-      Sampler.triggerRelease(note);
-      setPlaying(false);
-    }
-  }, [trigger, playing, Sampler, note]);
+    const handleKeyDown = event => {
+      if (event.key === trigger) Sampler.triggerAttack(note);
+    };
+    const handleKeyUp = event => {
+      if (event.key === trigger) Sampler.triggerRelease(note);
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    release && document.addEventListener("keyup", handleKeyUp);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      release && document.removeEventListener("keyup", handleKeyUp);
+    };
+  }, [Sampler, note, trigger, release]);
 
   const playSound = () => {
     Sampler.triggerAttackRelease(note);
@@ -45,7 +43,6 @@ function Sampler({ file, note, trigger }) {
 
   useEffect(() => {
     let animationId;
-
     const getLevel = () => {
       const level = Math.trunc(Meter.getLevel());
       if (level > -50) setAmplitude(level);
@@ -58,7 +55,7 @@ function Sampler({ file, note, trigger }) {
 
   return (
     <div className="sampler">
-      <div className={`audition ${playing ? "playing" : ""}`} onClick={playSound} />
+      <div className={`audition`} onClick={playSound} />
       <LevelMeter level={amplitude} />
     </div>
   );
