@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Tone from "tone";
 import LevelMeter from "../LevelMeter/LevelMeter";
-import "./sampler.css";
+import "./Sampler.css";
 
 function Sampler({ file, note, trigger, release }) {
   const [amplitude, setAmplitude] = useState(-50);
