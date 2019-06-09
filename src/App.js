@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import Sampler from "./Components/Sampler/Sampler";
 import MasterOut from "./Components/MasterOut/MasterOut";
+// import Visualiser from "./Components/Visualiser/Visualiser";
 import { sounds } from "./data";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         })}
       </div>
       <MasterOut />
+      {/* <Visualiser /> */}
     </div>
   );
 }
