@@ -1,27 +1,27 @@
 const sounds = [
   {
-    key: "a",
+    key: "r",
     file: "kick",
     note: "C3",
     release: false
   },
   {
-    key: "s",
+    key: "t",
     file: "snare",
     note: "D3",
     release: false
   },
   {
-    key: "d",
-    file: "hat-open",
+    key: "y",
+    file: "hat-closed",
     note: "E3",
-    release: true
+    release: false
   },
   {
     key: "f",
-    file: "hat-closed",
+    file: "hat-open",
     note: "F3",
-    release: false
+    release: true
   },
   {
     key: "g",
@@ -36,19 +36,19 @@ const sounds = [
     release: false
   },
   {
-    key: "j",
+    key: "v",
     file: "cymbal",
     note: "B4",
     release: false
   },
   {
-    key: "k",
+    key: "b",
     file: "stab",
     note: "C4",
     release: true
   },
   {
-    key: "l",
+    key: "n",
     file: "bass",
     note: "D4",
     release: true
