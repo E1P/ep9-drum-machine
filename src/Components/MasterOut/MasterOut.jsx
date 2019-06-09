@@ -21,34 +21,40 @@ function MasterOut() {
           release: 0.1
         })
       );
-      setDisto(new Tone.Distortion(0.9));
+      setDisto(
+        new Tone.Distortion({
+          distortion: 0.9,
+          wet: 0.2
+        })
+      );
       setChorus(
         new Tone.Chorus({
-          depth: 1
+          depth: 1,
+          wet: 0
         })
       );
       setPingPongDelay(
         new Tone.PingPongDelay({
           delayTime: 0.05,
           feedback: 0.9,
-          wet: 0.2
+          wet: 0
         })
       );
-      const verb = new Tone.Reverb(0.9);
-      verb.preDelay = 0.05;
+      const verb = new Tone.Reverb({
+        preDelay: 0.05,
+        decay: 0.9,
+        wet: 0.5
+      });
       verb.generate().then(() => {
         setReverb(verb);
         setReverbLoaded(true);
       });
     }
     if (!allLoaded && reverbLoaded) {
-      disto.wet.value = 0;
-      reverb.wet.value = 0.5;
-      chorus.wet.value = 0;
       Tone.Master.chain(disto, chorus, pingPongDelay, compressor, reverb);
       setAllLoaded(true);
     }
-  }, [reverbLoaded, compressor, disto, reverb, allLoaded, chorus, pingPongDelay]);
+  }, [reverbLoaded, allLoaded, compressor, disto, reverb, chorus, pingPongDelay]);
 
   return null;
 }
