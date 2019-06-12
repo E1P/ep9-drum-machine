@@ -19,6 +19,7 @@ function Sampler({ file, note, trigger, release }) {
       const meter = new Tone.Meter();
       setMeter(meter);
       Sampler.connect(meter);
+      Sampler.send("waveform", 0);
     };
     !samplerLoaded && createSampler();
     samplerLoaded && !Meter && connectSampler();
@@ -63,10 +64,12 @@ function Sampler({ file, note, trigger, release }) {
   }, [Meter, amplitude]);
 
   return (
-    <div className={`sampler ${depressed ? "depressed" : ""}`} onMouseDown={handleMouseClick} onMouseUp={handleMouseClick}>
-      {/* <div className={`audition`} onMouseDown={playSound} /> */}
-      <LevelMeter level={amplitude} />
-    </div>
+    samplerLoaded && (
+      <div className={`sampler ${depressed ? "depressed" : ""}`} onMouseDown={handleMouseClick} onMouseUp={handleMouseClick}>
+        {/* <div className={`audition`} onMouseDown={playSound} /> */}
+        <LevelMeter level={amplitude} />
+      </div>
+    )
   );
 }
 
