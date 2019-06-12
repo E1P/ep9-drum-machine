@@ -1,0 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.freq-box {
+  transition-property: height;
+  transition-duration: 10ms;
+  background-color: rgb(175, 0, 0);
+  height: 0%;
+  width: 19px;
+}
