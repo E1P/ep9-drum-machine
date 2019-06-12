@@ -24,7 +24,7 @@ function MasterOut() {
       setDisto(
         new Tone.Distortion({
           distortion: 0.9,
-          wet: 0.2
+          wet: 0
         })
       );
       setChorus(
