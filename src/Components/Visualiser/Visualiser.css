@@ -1,11 +1,20 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: content-box;
+  box-sizing: border-box;
 }
 
 .waveform {
-  height: 30px;
-  width: 30px;
-  background-color: red;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 350px;
+  width: 650px;
+  background-color: cornflowerblue;
+  border-left: 3px solid rgb(136, 164, 216);
+  border-top: 3px solid rgb(136, 164, 216);
+  border-right: 3px solid rgb(73, 124, 219);
+  border-bottom: 3px solid rgb(73, 124, 219);
+  border-radius: 5px;
+  box-shadow: 1px 5px 3px 2px rgb(75, 75, 75);
 }
