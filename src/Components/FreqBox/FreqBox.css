@@ -6,8 +6,10 @@
 
 .freq-box {
   transition-property: height;
-  transition-duration: 10ms;
-  background-color: rgb(175, 0, 0);
-  height: 0%;
-  width: 19px;
+  transition-duration: 125ms;
+  transition-timing-function: cubic-bezier(0.001, 0.82, 0.165, 1);
+  border-radius: 5px;
+  background-color: rgba(179, 0, 0);
+  height: 1%;
+  width: 2.5%;
 }
