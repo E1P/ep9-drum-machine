@@ -4,22 +4,6 @@
   box-sizing: border-box;
 }
 
-.drum-pad {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  align-items: space-around;
-  width: 350px;
-  height: 350px;
-  background-color: cornflowerblue;
-  border-left: 3px solid rgb(136, 164, 216);
-  border-top: 3px solid rgb(136, 164, 216);
-  border-right: 3px solid rgb(73, 124, 219);
-  border-bottom: 3px solid rgb(73, 124, 219);
-  border-radius: 5px;
-  box-shadow: 1px 5px 3px 2px rgb(75, 75, 75);
-}
-
 .sampler {
   display: flex;
   flex-direction: row;
@@ -38,6 +22,15 @@
   box-shadow: 2px 6px 3px rgb(67, 100, 161);
   transition-property: box-shadow;
   transition-duration: 50ms;
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  color: white;
+  font-size: 2.5em;
 }
 
 .depressed {
