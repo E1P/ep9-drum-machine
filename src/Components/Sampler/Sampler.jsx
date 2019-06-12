@@ -60,13 +60,16 @@ function Sampler({ file, note, trigger, release }) {
       animationId = requestAnimationFrame(getLevel);
     };
     if (Meter) animationId = requestAnimationFrame(getLevel);
-    return () => cancelAnimationFrame(animationId);
+    if (animationId) return () => cancelAnimationFrame(animationId);
   }, [Meter, amplitude]);
 
   return (
     samplerLoaded && (
       <div className={`sampler ${depressed ? "depressed" : ""}`} onMouseDown={handleMouseClick} onMouseUp={handleMouseClick}>
-        {/* <div className={`audition`} onMouseDown={playSound} /> */}
+        <div className="text-container">
+          <p>{`${trigger.toUpperCase()}`}</p>
+        </div>
+
         <LevelMeter level={amplitude} />
       </div>
     )
