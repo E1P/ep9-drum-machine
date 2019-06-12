@@ -55,4 +55,9 @@ const sounds = [
   }
 ];
 
-export { sounds };
+const initialFFTArray = [];
+for (let i = 0; i < 32; i++) {
+  initialFFTArray[i] = 0;
+}
+
+export { sounds, initialFFTArray };
