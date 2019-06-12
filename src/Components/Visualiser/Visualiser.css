@@ -10,6 +10,8 @@
   align-items: center;
   height: 350px;
   width: 650px;
+  max-width: 650px;
+  min-width: 350px;
   background-color: cornflowerblue;
   border-left: 3px solid rgb(136, 164, 216);
   border-top: 3px solid rgb(136, 164, 216);
