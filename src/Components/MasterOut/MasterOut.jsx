@@ -36,7 +36,7 @@ function MasterOut() {
       setPingPongDelay(
         new Tone.PingPongDelay({
           delayTime: 0.05,
-          feedback: 0.9,
+          feedback: 0.6,
           wet: 0
         })
       );
