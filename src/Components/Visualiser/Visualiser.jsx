@@ -4,10 +4,10 @@ import { initialFFTArray } from "../../data";
 import "./Visualiser.css";
 import FreqBox from "../FreqBox/FreqBox";
 
-function Visualiser() {
+function Visualiser({ enabled, handleVisualiserClick }) {
   const [waveform, setWaveform] = useState(null);
   const [values, setValues] = useState(initialFFTArray);
-  const [enabled, setEnabled] = useState(false);
+  // const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
     console.log("setting waveform");
@@ -18,10 +18,10 @@ function Visualiser() {
     waveform && waveform.receive("waveform");
   }, [waveform]);
 
-  const handleClick = () => {
-    setEnabled(!enabled);
-    console.log(enabled, `Visualiser ${enabled ? "on" : "off"}`);
-  };
+  // const handleClick = () => {
+  //   setEnabled(!enabled);
+  //   console.log(enabled, `Visualiser ${enabled ? "on" : "off"}`);
+  // };
 
   useEffect(() => {
     let animationId;
@@ -35,10 +35,10 @@ function Visualiser() {
       return () => {
         cancelAnimationFrame(animationId);
       };
-  }, [values, waveform, enabled]);
+  }, [enabled, values, waveform]);
 
   return (
-    <div className="waveform" onClick={handleClick}>
+    <div className="visualiser-box" onClick={handleVisualiserClick}>
       {!enabled && <p>Click to toggle audio visualiser</p>}
       {enabled &&
         values.map((freq, index) => {
