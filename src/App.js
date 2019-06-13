@@ -1,12 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Sampler from "./Components/Sampler/Sampler";
 import MasterOut from "./Components/MasterOut/MasterOut";
-// import Visualiser from "./Components/Visualiser/Visualiser";
+import Controls from "./Components/Controls/Controls";
+import Visualiser from "./Components/Visualiser/Visualiser";
 import LineVisualiser from "./Components/LineVisualiser/LineVisualiser";
 import { sounds } from "./data";
 
 function App() {
+  const [visualiser, setVisualiser] = useState("box"); // or "line"
+  const [enabled, setEnabled] = useState(false);
+
+  const handleVisualiserChange = () => {
+    setVisualiser(visualiser === "box" ? "line" : "box");
+    setEnabled(enabled);
+  };
+
+  const handleVisualiserClick = () => {
+    setEnabled(!enabled);
+  };
+
   return (
     <div className="App">
       <div className="main-container">
@@ -16,9 +29,10 @@ function App() {
             return <Sampler key={index} file={file} note={note} trigger={key} release={release} />;
           })}
         </div>
+        <Controls visualiser={visualiser} handleVisualiserChange={handleVisualiserChange} />
         <MasterOut />
-        {/* <Visualiser /> */}
-        <LineVisualiser />
+        {visualiser === "box" && <Visualiser handleVisualiserClick={handleVisualiserClick} enabled={enabled} />}
+        {visualiser === "line" && <LineVisualiser handleVisualiserClick={handleVisualiserClick} enabled={enabled} />}
       </div>
     </div>
   );
