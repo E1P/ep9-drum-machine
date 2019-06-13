@@ -10,14 +10,14 @@
   justify-content: space-around;
   align-content: center;
   height: 100vh;
-  background-color: rgb(107, 107, 107);
+  background-color: rgb(134, 134, 134);
 }
 
 .main-container {
   display: flex;
   flex-flow: row wrap;
   width: 90vw;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .drum-pad {
@@ -25,14 +25,15 @@
   flex-flow: row wrap;
   justify-content: space-around;
   align-items: center;
-  width: 350px;
-  min-width: 350px;
   height: 350px;
+  width: 350px;
+  max-width: 650px;
+  min-width: 350px;
   background-color: cornflowerblue;
   border-left: 3px solid rgb(136, 164, 216);
   border-top: 3px solid rgb(136, 164, 216);
   border-right: 3px solid rgb(73, 124, 219);
   border-bottom: 3px solid rgb(73, 124, 219);
   border-radius: 5px;
-  box-shadow: 1px 5px 3px 2px rgb(75, 75, 75);
+  box-shadow: 1px 5px 3px 2px rgb(110, 110, 110);
 }
