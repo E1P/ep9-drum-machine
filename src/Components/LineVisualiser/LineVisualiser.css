@@ -6,7 +6,7 @@
 
 .waveform {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   height: 350px;
   width: 650px;
@@ -18,5 +18,5 @@
   border-right: 3px solid rgb(73, 124, 219);
   border-bottom: 3px solid rgb(73, 124, 219);
   border-radius: 5px;
-  box-shadow: 1px 5px 3px 2px rgb(75, 75, 75);
+  box-shadow: 1px 5px 3px 2px rgb(110, 110, 110);
 }
