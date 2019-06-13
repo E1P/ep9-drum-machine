@@ -25,19 +25,19 @@ const sounds = [
   },
   {
     key: "g",
-    file: "shaker",
+    file: "tube-hit",
     note: "G3",
     release: false
   },
   {
     key: "h",
-    file: "tamb",
+    file: "cymbal",
     note: "A4",
     release: false
   },
   {
     key: "v",
-    file: "cymbal",
+    file: "strings",
     note: "B4",
     release: false
   },
