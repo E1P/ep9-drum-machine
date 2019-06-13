@@ -5,21 +5,13 @@ import "./LineVisualiser.css";
 function LineVisualiser({ enabled, handleVisualiserClick }) {
   const [waveform, setWaveform] = useState(null);
   const [freqLine, setFreqLine] = useState("350 650");
-  // const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
-    console.log("setting waveform");
     if (!waveform) {
       setWaveform(new Tone.FFT(32));
-      console.log("waveform node >>> ", waveform);
     }
     waveform && waveform.receive("waveform");
   }, [waveform]);
-
-  // const handleClick = () => {
-  //   setEnabled(!enabled);
-  //   console.log(enabled, `Visualiser ${enabled ? "on" : "off"}`);
-  // };
 
   useEffect(() => {
     let animationId;
@@ -48,16 +40,7 @@ function LineVisualiser({ enabled, handleVisualiserClick }) {
       {enabled && (
         <div className="waveform">
           <svg width="646" height="346">
-            <polyline
-              points={freqLine}
-              shapeRendering="auto"
-              fill="white"
-              fillOpacity="0.5"
-              fillRule="nonzero"
-              stroke="white"
-              stroke-width="5"
-              // stroke-linejoin="round"
-            />
+            <polyline points={freqLine} shapeRendering="auto" fill="white" fillOpacity="0.5" fillRule="nonzero" stroke="white" strokeWidth="5" />
           </svg>
         </div>
       )}

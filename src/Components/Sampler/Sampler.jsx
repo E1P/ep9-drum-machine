@@ -9,7 +9,6 @@ function Sampler({ file, note, trigger, release }) {
   const [Meter, setMeter] = useState(null);
   const [samplerLoaded, setSamplerLoaded] = useState(false);
   const [depressed, setDepressed] = useState(false);
-  // const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
     const createSampler = () => {

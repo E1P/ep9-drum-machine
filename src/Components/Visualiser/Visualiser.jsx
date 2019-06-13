@@ -7,21 +7,13 @@ import FreqBox from "../FreqBox/FreqBox";
 function Visualiser({ enabled, handleVisualiserClick }) {
   const [waveform, setWaveform] = useState(null);
   const [values, setValues] = useState(initialFFTArray);
-  // const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
-    console.log("setting waveform");
     if (!waveform) {
       setWaveform(new Tone.FFT(32));
-      console.log("waveform node >>> ", waveform);
     }
     waveform && waveform.receive("waveform");
   }, [waveform]);
-
-  // const handleClick = () => {
-  //   setEnabled(!enabled);
-  //   console.log(enabled, `Visualiser ${enabled ? "on" : "off"}`);
-  // };
 
   useEffect(() => {
     let animationId;
