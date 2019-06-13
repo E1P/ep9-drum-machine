@@ -40,7 +40,7 @@ function LineVisualiser({ enabled, handleVisualiserClick }) {
       {enabled && (
         <div className="waveform">
           <svg width="646" height="346">
-            <polyline points={freqLine} shapeRendering="auto" fill="white" fillOpacity="0.5" fillRule="nonzero" stroke="white" strokeWidth="5" />
+            <polyline points={freqLine} shapeRendering="auto" fill="white" fillOpacity="0.5" stroke="white" strokeWidth="5" />
           </svg>
         </div>
       )}
