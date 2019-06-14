@@ -16,11 +16,11 @@
 .main-container {
   display: flex;
   flex-flow: row nowrap;
-  height: 365px;
+  height: 375px;
   width: 1150px;
   padding: 10px;
   justify-content: center;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .drum-pad {
