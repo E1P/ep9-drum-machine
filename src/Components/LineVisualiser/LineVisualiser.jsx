@@ -47,7 +47,7 @@ function LineVisualiser({ enabled, handleVisualiserClick }) {
               <linearGradient id="fill-gradient" x1="0" x2="0" y1="1" y2="0">
                 {/* gradient co-ords */}
                 <stop offset="0" stop-color="white" />
-                <stop offset="1" stop-color="" />
+                <stop offset="1" stop-color="red" />
               </linearGradient>
             </defs>
             <polyline
@@ -56,8 +56,8 @@ function LineVisualiser({ enabled, handleVisualiserClick }) {
               shapeRendering="auto"
               fill="url(#fill-gradient)"
               fillOpacity="0.5"
-              stroke="url(#fill-gradient)"
-              strokeWidth="1"
+              stroke="red"
+              strokeWidth="3"
             />
           </svg>
         </div>
