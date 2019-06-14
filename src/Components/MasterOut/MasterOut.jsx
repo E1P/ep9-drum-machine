@@ -1,4 +1,4 @@
-import { /* React, */ useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Tone from "tone";
 Tone.context.lookAhead = 0;
 
@@ -56,7 +56,7 @@ function MasterOut() {
     }
   }, [reverbLoaded, allLoaded, compressor, disto, reverb, chorus, pingPongDelay]);
 
-  return null;
+  return <div className="master-box" />;
 }
 
 export default MasterOut;
