@@ -50,6 +50,10 @@ function Sampler({ file, note, trigger, release }) {
     !depressed && Sampler.triggerAttackRelease(note);
   };
 
+  const handleMouseLeave = () => {
+    setDepressed(false);
+  };
+
   useEffect(() => {
     let animationId;
     const getLevel = () => {
@@ -64,7 +68,12 @@ function Sampler({ file, note, trigger, release }) {
 
   return (
     samplerLoaded && (
-      <div className={`sampler ${depressed ? "depressed" : ""}`} onMouseDown={handleMouseClick} onMouseUp={handleMouseClick}>
+      <div
+        className={`sampler ${depressed ? "depressed" : ""}`}
+        onMouseDown={handleMouseClick}
+        onMouseUp={handleMouseClick}
+        onMouseLeave={handleMouseLeave}
+      >
         <div className="text-container">
           <p>{`${trigger.toUpperCase()}`}</p>
         </div>
