@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
 import Tone from "tone";
 import "./LineVisualiser.css";
+import { calculateAverages } from "../../util-functions";
 
 function LineVisualiser({ enabled, handleVisualiserClick }) {
   const [waveform, setWaveform] = useState(null);
-  const [valuesArray, setValuesArray] = useState([]);
+  const [values, setValues] = useState([]);
   const [freqLine, setFreqLine] = useState("350 650");
+  const [valuesArr, setValuesArr] = useState([[], [], []]);
+  const savedValues = useRef();
 
   useEffect(() => {
     if (!waveform) {
@@ -14,40 +17,48 @@ function LineVisualiser({ enabled, handleVisualiserClick }) {
     waveform && waveform.receive("waveform");
   }, [waveform]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     let animationId;
     const getValues = () => {
-      const values = Array.from(waveform.getValue());
-      setValuesArray([values, ...valuesArray.slice(0, 2)]);
-      // get average values from valuesArray
-      const lineString = values
-        .map((freq, index) => {
-          const y = freq > -99 ? 350 - (Math.trunc(freq) + 100) * 3.5 : 344;
-          const x = index * 20.51 + 4;
-          return `${x},${y}`;
-        })
-        .join(" ");
-      setFreqLine(`5,345 ${lineString} 641,345 5,345`);
-      requestAnimationFrame(getValues);
+      const newValues = Array.from(waveform.getValue());
+      setValues(newValues);
+      savedValues.current = !savedValues.current ? [newValues] : [newValues, ...savedValues.current.slice(0, 2)];
+      setValuesArr(savedValues.current);
+      // requestAnimationFrame(getValues);
     };
+
     if (waveform && enabled) animationId = requestAnimationFrame(getValues);
     if (animationId)
       return () => {
         cancelAnimationFrame(animationId);
       };
-  }, [waveform, enabled, valuesArray]);
+  }, [waveform, enabled, values]);
+
+  useLayoutEffect(() => {
+    const createLineString = arr => {
+      return arr
+        .map((freq, index) => {
+          const y = freq > -99 ? 350 - (Math.floor(freq) + 100) * 3.5 : 344;
+          const x = index * 20.51 + 4;
+          return `${x},${y}`;
+        })
+        .join(" ");
+    };
+    let lineString;
+    lineString = createLineString(calculateAverages(valuesArr));
+    setFreqLine(`5,345 ${lineString} 641,345 5,345`);
+  }, [valuesArr]);
 
   return (
     <div className="waveform" onClick={handleVisualiserClick}>
       {!enabled && <p>Click to toggle audio visualiser</p>}
       {enabled && (
-        <div /* className="waveform" */>
+        <div>
           <svg width="646" height="345" className="svg-container">
             <defs>
               <linearGradient id="fill-gradient" x1="0" x2="0" y1="1" y2="0">
-                {/* gradient co-ords */}
-                <stop offset="0" stop-color="white" />
-                <stop offset="1" stop-color="red" />
+                <stop offset="0" stopColor="white" />
+                <stop offset="1" stopColor="red" />
               </linearGradient>
             </defs>
             <polyline
@@ -57,7 +68,7 @@ function LineVisualiser({ enabled, handleVisualiserClick }) {
               fill="url(#fill-gradient)"
               fillOpacity="0.5"
               stroke="red"
-              strokeWidth="3"
+              strokeWidth="1"
             />
           </svg>
         </div>
