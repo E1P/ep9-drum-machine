@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Tone from "tone";
+import "./master-out.css";
 Tone.context.lookAhead = 0;
 
 function MasterOut() {
@@ -10,6 +11,7 @@ function MasterOut() {
   const [pingPongDelay, setPingPongDelay] = useState(null);
   const [reverb, setReverb] = useState(null);
   const [allLoaded, setAllLoaded] = useState(false);
+  const [audioEnabled, setAudioEnabled] = useState(true);
 
   useEffect(() => {
     if (!reverbLoaded) {
@@ -56,7 +58,18 @@ function MasterOut() {
     }
   }, [reverbLoaded, allLoaded, compressor, disto, reverb, chorus, pingPongDelay]);
 
-  return <div className="master-box" />;
+  const handleEnableAudio = () => {
+    setAudioEnabled(!audioEnabled);
+    Tone.Master.mute = audioEnabled;
+  };
+
+  return (
+    <div className="master-box">
+      <div className="mute-toggle" onClick={handleEnableAudio}>
+        {audioEnabled ? "Mute" : "Unmute"}
+      </div>
+    </div>
+  );
 }
 
 export default MasterOut;
