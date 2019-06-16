@@ -9,7 +9,7 @@ import LineVisualiser from "./Components/LineVisualiser/LineVisualiser";
 import { sounds } from "./data";
 
 function App() {
-  const [visualiser, setVisualiser] = useState("box"); // or "line"
+  const [visualiser, setVisualiser] = useState("line"); // or "box"
   const [enabled, setEnabled] = useState(false);
   const [isMobile] = useState(detectMob());
 
@@ -34,8 +34,11 @@ function App() {
               return <Sampler key={index} file={file} note={note} trigger={key} release={release} />;
             })}
           </div>
-          <Controls visualiser={visualiser} handleVisualiserChange={handleVisualiserChange} />
-          <MasterOut />
+          <div className="master-controls-box">
+            <Controls visualiser={visualiser} handleVisualiserChange={handleVisualiserChange} />
+            <MasterOut />
+          </div>
+
           {visualiser === "box" && <Visualiser handleVisualiserClick={handleVisualiserClick} enabled={enabled} />}
           {visualiser === "line" && <LineVisualiser handleVisualiserClick={handleVisualiserClick} enabled={enabled} />}
         </div>
