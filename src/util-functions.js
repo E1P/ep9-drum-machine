@@ -14,4 +14,16 @@ const detectMob = () => {
   }
 };
 
-export { detectMob };
+const calculateAverages = arrOfArr => {
+  const resultArr = [];
+  for (let i = 0; i < arrOfArr[0].length; i++) {
+    let sum = 0;
+    for (let j = 0; j < arrOfArr.length; j++) {
+      sum += Math.trunc(arrOfArr[j][i]);
+    }
+    resultArr.push(sum / arrOfArr.length);
+  }
+  return resultArr;
+};
+
+export { detectMob, calculateAverages };
