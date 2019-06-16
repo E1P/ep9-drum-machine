@@ -4,15 +4,12 @@
   box-sizing: content-box;
 }
 
-.control-box {
+.master-box {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
-  /* align-items: center; */
-  height: 350px;
+  flex-grow: 1;
   width: 100px;
-  max-width: 100px;
-  min-width: 100px;
   background-color: cornflowerblue;
   border-left: 3px solid rgb(136, 164, 216);
   border-top: 3px solid rgb(136, 164, 216);
@@ -20,4 +17,33 @@
   border-bottom: 3px solid rgb(73, 124, 219);
   border-radius: 5px;
   box-shadow: 1px 5px 3px 2px rgb(110, 110, 110);
+}
+
+.mute-toggle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 90px;
+  margin: 12px 5px;
+  padding: 3px;
+  color: rgb(131, 48, 0);
+  border-left: 4px solid rgb(253, 199, 127);
+  border-top: 4px solid rgb(253, 199, 127);
+  border-right: 4px solid rgb(230, 142, 28);
+  border-bottom: 4px solid rgb(230, 142, 28);
+  border-radius: 10px;
+  background-color: rgb(255, 174, 67);
+  cursor: pointer;
+  box-shadow: 2px 6px 3px rgb(67, 100, 161);
+  transition-property: box-shadow, color;
+  transition-duration: 50ms;
+}
+.mute-toggle:active {
+  box-shadow: 1px 1px 0px rgb(67, 100, 161);
+  color: rgb(255, 174, 67);
+  font-size: 0;
+  transition-property: box-shadow, color;
+  transition-duration: 50ms;
 }
