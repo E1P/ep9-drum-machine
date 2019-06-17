@@ -1,13 +1,14 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: content-box;
+  box-sizing: border-box;
 }
 
 .master-box {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-around;
+  justify-content: center;
+  align-content: space-between;
   flex-grow: 1;
   width: 100px;
   background-color: cornflowerblue;
@@ -16,7 +17,7 @@
   border-right: 3px solid rgb(73, 124, 219);
   border-bottom: 3px solid rgb(73, 124, 219);
   border-radius: 5px;
-  box-shadow: 1px 5px 3px 2px rgb(110, 110, 110);
+  /* box-shadow: 1px 5px 3px 2px rgb(110, 110, 110); */
 }
 
 .mute-toggle {
