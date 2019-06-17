@@ -45,7 +45,8 @@ function Sampler({ file, note, trigger, release }) {
     };
   }, [Sampler, note, trigger, release]);
 
-  const handleMouseClick = () => {
+  const handleMouseClick = event => {
+    event.preventDefault();
     setDepressed(!depressed);
     !depressed && Sampler.triggerAttackRelease(note);
   };
