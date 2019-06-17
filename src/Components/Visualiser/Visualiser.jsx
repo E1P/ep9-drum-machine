@@ -20,7 +20,7 @@ function Visualiser({ enabled, handleVisualiserClick }) {
     const getValues = () => {
       const newValues = Array.from(waveform.getValue());
       setValues(newValues);
-      requestAnimationFrame(getValues);
+      // requestAnimationFrame(getValues);
     };
     if (waveform && enabled) animationId = requestAnimationFrame(getValues);
     if (animationId)
@@ -30,13 +30,16 @@ function Visualiser({ enabled, handleVisualiserClick }) {
   }, [enabled, values, waveform]);
 
   return (
-    <div className="visualiser-box" onClick={handleVisualiserClick}>
-      {!enabled && <p>Click to toggle audio visualiser</p>}
-      {enabled &&
-        values.map((freq, index) => {
-          freq = freq > -99 ? freq : -99;
-          return <FreqBox key={index} freq={freq} />;
-        })}
+    <div className="waveform" onClick={handleVisualiserClick}>
+      {!enabled && <p className="visualiser-text">Click to toggle audio visualiser</p>}
+      {enabled && (
+        <div className="visualiser-box">
+          {values.map((freq, index) => {
+            freq = freq > -99 ? freq : -99;
+            return <FreqBox key={index} freq={freq} />;
+          })}
+        </div>
+      )}
     </div>
   );
 }
