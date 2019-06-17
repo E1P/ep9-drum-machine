@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import "./App.css";
 import { detectMob } from "./util-functions";
+import Header from "./Components/Header/Header";
 import Sampler from "./Components/Sampler/Sampler";
 import MasterOut from "./Components/MasterOut/MasterOut";
 import Controls from "./Components/Controls/Controls";
 import Visualiser from "./Components/Visualiser/Visualiser";
 import LineVisualiser from "./Components/LineVisualiser/LineVisualiser";
 import { sounds } from "./data";
+import image from "./images/eP9drumMachine.png";
 
 function App() {
-  const [visualiser, setVisualiser] = useState("line"); // or "box"
+  const [visualiser, setVisualiser] = useState("box"); // or "line"
   const [enabled, setEnabled] = useState(false);
   const [isMobile] = useState(detectMob());
 
@@ -25,13 +27,13 @@ function App() {
   return (
     <div className="App">
       {isMobile ? (
-        "Desktop only. Sorry."
+        <div>
+          <p className="app-text">Desktop only. Sorry.</p>
+          <img src={image} alt="Drum machine" width="90%" />
+        </div>
       ) : (
         <div className="main-container">
-          <div className="header-container">
-            <header className="header">EP-9 Drum Machine</header>
-            <div className="menu-container" />
-          </div>
+          <Header />
           <div className="machine-container">
             <div className="drum-pad">
               {sounds.map((sound, index) => {
