@@ -27,7 +27,7 @@ function App() {
   return (
     <div className="App">
       {isMobile ? (
-        <div>
+        <div className="non-desktop">
           <p className="app-text">Desktop only. Sorry.</p>
           <img src={image} alt="Drum machine" width="90%" />
         </div>
