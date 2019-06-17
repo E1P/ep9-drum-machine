@@ -9,13 +9,14 @@
   flex-flow: row wrap;
   justify-content: space-around;
   width: 100px;
+  height: 120px;
   background-color: cornflowerblue;
   border-left: 3px solid rgb(136, 164, 216);
   border-top: 3px solid rgb(136, 164, 216);
   border-right: 3px solid rgb(73, 124, 219);
   border-bottom: 3px solid rgb(73, 124, 219);
   border-radius: 5px;
-  box-shadow: 1px 5px 3px 2px rgb(110, 110, 110);
+  /* box-shadow: 1px 5px 3px 2px rgb(110, 110, 110); */
 }
 
 .visualiser-toggle {
@@ -45,4 +46,11 @@
   font-size: 0;
   transition-property: box-shadow, color;
   transition-duration: 50ms;
+}
+
+.controls-text-box {
+  padding: 5px 0;
+}
+.controls-text {
+  color: white;
 }
