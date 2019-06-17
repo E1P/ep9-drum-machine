@@ -29,7 +29,7 @@ function App() {
       ) : (
         <div className="main-container">
           <div className="header-container">
-            <header className="header">Drum Machine EP-9</header>
+            <header className="header">EP-9 Drum Machine</header>
             <div className="menu-container" />
           </div>
           <div className="machine-container">
