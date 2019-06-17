@@ -5,11 +5,12 @@
 }
 
 .freq-box {
-  transition-property: height;
-  transition-duration: 125ms;
-  transition-timing-function: cubic-bezier(0.001, 0.82, 0.165, 1);
+  /* transition-property: height;
+  transition-duration: 0ms;
+  transition-timing-function: cubic-bezier(0.001, 0.82, 0.165, 1); */
   border-radius: 5px;
-  background-color: rgba(179, 0, 0);
-  height: 1%;
-  width: calc(100% / 34);
+  border: 2px solid rgba(179, 0, 0);
+  /* background-color: rgba(179, 0, 0, 0); */
+  height: 2.5%;
+  width: calc(100% / 68);
 }

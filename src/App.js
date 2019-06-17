@@ -9,7 +9,7 @@ import LineVisualiser from "./Components/LineVisualiser/LineVisualiser";
 import { sounds } from "./data";
 
 function App() {
-  const [visualiser, setVisualiser] = useState("box"); // or "line"
+  const [visualiser, setVisualiser] = useState("line"); // or "box"
   const [enabled, setEnabled] = useState(false);
   const [isMobile] = useState(detectMob());
 
@@ -28,16 +28,26 @@ function App() {
         "Desktop only. Sorry."
       ) : (
         <div className="main-container">
-          <div className="drum-pad">
-            {sounds.map((sound, index) => {
-              const { file, note, key, release } = sound;
-              return <Sampler key={index} file={file} note={note} trigger={key} release={release} />;
-            })}
+          <div className="header-container">
+            <header className="header">Drum Machine EP-9</header>
+            <div className="menu-container" />
           </div>
-          <Controls visualiser={visualiser} handleVisualiserChange={handleVisualiserChange} />
-          <MasterOut />
-          {visualiser === "box" && <Visualiser handleVisualiserClick={handleVisualiserClick} enabled={enabled} />}
-          {visualiser === "line" && <LineVisualiser handleVisualiserClick={handleVisualiserClick} enabled={enabled} />}
+          <div className="machine-container">
+            <div className="drum-pad">
+              {sounds.map((sound, index) => {
+                const { file, note, key, release } = sound;
+                return <Sampler key={index} file={file} note={note} trigger={key} release={release} />;
+              })}
+            </div>
+            <div className="master-controls-box">
+              <Controls visualiser={visualiser} handleVisualiserChange={handleVisualiserChange} />
+              <div className="controls-seam-filler" />
+              <MasterOut />
+            </div>
+
+            {visualiser === "box" && <Visualiser handleVisualiserClick={handleVisualiserClick} enabled={enabled} />}
+            {visualiser === "line" && <LineVisualiser handleVisualiserClick={handleVisualiserClick} enabled={enabled} />}
+          </div>
         </div>
       )}
     </div>
