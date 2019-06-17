@@ -5,7 +5,11 @@ const Controls = ({ visualiser, handleVisualiserChange }) => {
   return (
     <div className="control-box">
       <div className="visualiser-toggle" onClick={handleVisualiserChange}>
-        {visualiser.toUpperCase()}
+        {`${visualiser[0].toUpperCase()}${visualiser.slice(1)}`}
+      </div>
+      <div className="controls-text-box">
+        <p className="controls-text">Display</p>
+        <p className="controls-text">type</p>
       </div>
     </div>
   );
