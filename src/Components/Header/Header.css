@@ -1,0 +1,9 @@
+.header-container {
+  display: flex;
+  width: 1100px;
+}
+
+.header {
+  font-size: 3em;
+  color: white;
+}

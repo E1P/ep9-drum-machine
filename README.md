@@ -1,10 +1,15 @@
-Sample player with level meters on each sample
+# EP9 Drum Machine
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple drum machine built with React using only functional components & React Hooks.
+Audio interaction & processing comes from [Tone.js](https://tonejs.github.io/), a framework built on top of the Web Audio API.
 
-## Available Scripts
+### To get the project up and running locally:
 
-In the project directory, you can run:
+Clone this repo and cd into the project directory.
+
+### `npm install`
+
+This will install all the necessary dependencies.
 
 ### `npm start`
 

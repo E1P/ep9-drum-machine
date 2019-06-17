@@ -22,7 +22,7 @@ function LineVisualiser({ enabled, handleVisualiserClick }) {
     const getValues = () => {
       const newValues = Array.from(waveform.getValue());
       setValues(newValues);
-      savedValues.current = !savedValues.current ? [newValues] : [newValues, ...savedValues.current.slice(0, 2)];
+      savedValues.current = !savedValues.current ? [newValues] : [newValues, ...savedValues.current.slice(0, 4)];
       setValuesArr(savedValues.current);
       // requestAnimationFrame(getValues);
     };
