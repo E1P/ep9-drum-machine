@@ -39,7 +39,7 @@ function LineVisualiser({ enabled, handleVisualiserClick }) {
       return arr
         .map((freq, index) => {
           const y = freq > -99 ? 350 - (Math.floor(freq) + 100) * 3.5 : 344;
-          const x = index * 20.51 + 4;
+          const x = index * 20.51 + 5;
           return `${x},${y}`;
         })
         .join(" ");
@@ -51,10 +51,10 @@ function LineVisualiser({ enabled, handleVisualiserClick }) {
 
   return (
     <div className="waveform" onClick={handleVisualiserClick}>
-      {!enabled && <p>Click to toggle audio visualiser</p>}
+      {!enabled && <p className="visualiser-text">Click to toggle audio visualiser</p>}
       {enabled && (
-        <div>
-          <svg width="646" height="345" className="svg-container">
+        <div className="svg-container">
+          <svg width="646" height="345">
             <defs>
               <linearGradient id="fill-gradient" x1="0" x2="0" y1="1" y2="0">
                 <stop offset="0" stopColor="white" />
