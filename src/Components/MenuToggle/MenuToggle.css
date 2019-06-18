@@ -1,0 +1,25 @@
+.menu-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: solid 2px orange; */
+}
+
+.toggle-box {
+  /* border: solid 2px white; */
+  padding-right: 20px;
+  font-size: 3em;
+  cursor: pointer;
+  transition: color 250ms, transform 250ms;
+}
+
+.toggle-box:hover {
+  /* color: red; */
+  transform: scale(1.07);
+  transition: /* color 250ms, */ transform 250ms;
+}
+
+.toggled {
+  opacity: 0;
+  transition: opacity 250ms;
+}

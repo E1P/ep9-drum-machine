@@ -31,7 +31,7 @@ function Visualiser({ enabled, handleVisualiserClick }) {
 
   return (
     <div className="waveform" onClick={handleVisualiserClick}>
-      {!enabled && <p className="visualiser-text">Click to toggle audio visualiser</p>}
+      {!enabled && <p className="visualiser-text">Click to enable audio visualiser</p>}
       {enabled && (
         <div className="visualiser-box">
           {values.map((freq, index) => {
