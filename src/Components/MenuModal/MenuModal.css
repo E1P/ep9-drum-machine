@@ -4,7 +4,7 @@
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.8);
   border-left: 3px solid rgba(37, 37, 37, 0.7);
   border-top: 3px solid rgb(37, 37, 37, 0.7);
   border-right: 3px solid rgba(0, 0, 0, 0.7);
@@ -61,6 +61,10 @@
   border-radius: 10px;
 }
 
+.sampler-outline > p {
+  text-align: center;
+}
+
 .controls-master-outline {
   display: flex;
   flex-direction: column;
@@ -88,15 +92,43 @@
 
 .dm-info {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   width: 650px;
   height: 350px;
   padding: 15px;
-  /* border: 2px dashed rgb(180, 180, 180); */
 }
 
-.dm-info-1 {
+.dm-info-controls {
+  width: 200px;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
 }
 
-.dm-info-1 {
+.dm-info-controls > p {
+  text-align: center;
+}
+
+.dm-info-2 {
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.dm-info-2 > p > ul {
+  padding-left: 12px;
+  text-align: left;
+}
+
+a:link {
+  color: white;
+}
+
+a:visited {
+  color: white;
+}
+
+.flex-spacer {
+  flex-grow: 1;
 }
