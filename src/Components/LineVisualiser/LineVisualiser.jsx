@@ -57,7 +57,7 @@ function LineVisualiser({ enabled, handleVisualiserClick }) {
           <svg width="646" height="345">
             <defs>
               <linearGradient id="fill-gradient" x1="0" x2="0" y1="1" y2="0">
-                <stop offset="0" stopColor="white" />
+                <stop offset="0" stopColor="transparent" />
                 <stop offset="1" stopColor="rgba(179, 0, 0)" />
               </linearGradient>
             </defs>
@@ -69,6 +69,7 @@ function LineVisualiser({ enabled, handleVisualiserClick }) {
               fillOpacity="0.5"
               stroke="rgba(179, 0, 0)"
               strokeWidth="1"
+              strokeOpacity="0.7"
             />
           </svg>
         </div>
