@@ -11,7 +11,9 @@
   justify-content: center;
   height: 100vh;
   background-color: rgb(134, 134, 134);
-  overflow: auto;
+  background-image: radial-gradient(rgb(134, 134, 134, 0.5), grey), url("./images/synth-background.jpg");
+  background-blend-mode: difference;
+  overflow: hidden;
   font-family: "Orbitron", sans-serif;
 }
 
@@ -35,6 +37,7 @@
 }
 
 .machine-container {
+  position: relative;
   font-family: "Orbitron", sans-serif;
   display: flex;
   flex-flow: row nowrap;
@@ -43,7 +46,7 @@
   /* padding: 10px; */
   justify-content: center;
   background-color: rgb(110, 110, 110, 0.5);
-  box-shadow: 1px 5px 3px 2px rgb(110, 110, 110);
+  box-shadow: 1px 5px 3px 3px rgba(0, 0, 0, 0.336);
 }
 
 .drum-pad {
@@ -53,11 +56,11 @@
   align-items: center;
   height: 350px;
   width: 350px;
-  background-color: cornflowerblue;
-  border-left: 3px solid rgb(136, 164, 216);
-  border-top: 3px solid rgb(136, 164, 216);
-  border-right: 3px solid rgb(73, 124, 219);
-  border-bottom: 3px solid rgb(73, 124, 219);
+  background-color: rgb(209, 209, 209);
+  border-left: 3px solid rgb(236, 236, 236);
+  border-top: 3px solid rgb(236, 236, 236);
+  border-right: 3px solid rgb(167, 167, 167);
+  border-bottom: 3px solid rgb(167, 167, 167);
   border-radius: 5px;
   /* box-shadow: 1px 5px 3px 2px rgb(110, 110, 110); */
 }
@@ -76,8 +79,8 @@
   left: 97px;
   width: 6px;
   height: 120px;
-  background-color: cornflowerblue;
-  border-top: 3px solid rgb(136, 164, 216);
-  border-bottom: 3px solid rgb(73, 124, 219);
+  background-color: rgb(209, 209, 209);
+  border-top: 3px solid rgb(236, 236, 236);
+  border-bottom: 3px solid rgb(167, 167, 167);
   border-bottom-right-radius: 5px;
 }
