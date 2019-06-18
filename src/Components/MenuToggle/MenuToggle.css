@@ -7,13 +7,19 @@
 
 .toggle-box {
   /* border: solid 2px white; */
-  padding: 0 20px;
+  padding-right: 20px;
   font-size: 3em;
   cursor: pointer;
-  transition: color 250ms;
+  transition: color 250ms, transform 250ms;
 }
 
 .toggle-box:hover {
-  color: rgba(255, 255, 255, 0.267);
-  transition: color 350ms;
+  /* color: red; */
+  transform: scale(1.07);
+  transition: /* color 250ms, */ transform 250ms;
+}
+
+.toggled {
+  opacity: 0;
+  transition: opacity 250ms;
 }
