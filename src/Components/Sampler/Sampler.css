@@ -20,7 +20,7 @@
   border-radius: 10px;
   background-color: mediumseagreen;
   cursor: pointer;
-  box-shadow: 2px 6px 3px rgb(67, 100, 161);
+  box-shadow: 2px 6px 3px rgb(109, 109, 109);
   transition-property: box-shadow;
   transition-duration: 50ms;
 }
@@ -30,12 +30,16 @@
   flex-direction: column;
   width: 100%;
   align-items: center;
-  color: white;
   font-size: 2.5em;
+  color: white;
 }
 
+/* .text-container > p {
+  text-shadow: 2px 0px rgb(92, 199, 140), -2px 0px rgb(33, 150, 86), 0px 2px rgb(92, 199, 140), 0px -2px rgb(33, 150, 86);
+} */
+
 .depressed {
-  box-shadow: 1px 1px 0px rgb(67, 100, 161);
+  box-shadow: 1px 1px 1px rgb(109, 109, 109);
   transition-property: box-shadow;
   transition-duration: 50ms;
 }
