@@ -5,6 +5,7 @@
 }
 
 .App {
+  position: relative;
   display: flex;
   flex-flow: row nowrap;
   align-content: center;
@@ -37,7 +38,6 @@
 }
 
 .machine-container {
-  position: relative;
   font-family: "Orbitron", sans-serif;
   display: flex;
   flex-flow: row nowrap;
