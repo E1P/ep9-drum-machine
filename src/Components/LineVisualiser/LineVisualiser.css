@@ -11,7 +11,7 @@
   height: 350px;
   width: 650px;
   cursor: pointer;
-  background-color: rgb(209, 209, 209);
+  background-color: transparent;
   border-left: 3px solid rgb(236, 236, 236);
   border-top: 3px solid rgb(236, 236, 236);
   border-right: 3px solid rgb(167, 167, 167);
