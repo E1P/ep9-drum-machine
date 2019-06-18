@@ -51,14 +51,14 @@ function LineVisualiser({ enabled, handleVisualiserClick }) {
 
   return (
     <div className="waveform" onClick={handleVisualiserClick}>
-      {!enabled && <p className="visualiser-text">Click to toggle audio visualiser</p>}
+      {!enabled && <p className="visualiser-text">Click to enable audio visualiser</p>}
       {enabled && (
         <div className="svg-container">
           <svg width="646" height="345">
             <defs>
               <linearGradient id="fill-gradient" x1="0" x2="0" y1="1" y2="0">
                 <stop offset="0" stopColor="white" />
-                <stop offset="1" stopColor="red" />
+                <stop offset="1" stopColor="rgba(179, 0, 0)" />
               </linearGradient>
             </defs>
             <polyline
@@ -67,7 +67,7 @@ function LineVisualiser({ enabled, handleVisualiserClick }) {
               shapeRendering="auto"
               fill="url(#fill-gradient)"
               fillOpacity="0.5"
-              stroke="red"
+              stroke="rgba(179, 0, 0)"
               strokeWidth="1"
             />
           </svg>
