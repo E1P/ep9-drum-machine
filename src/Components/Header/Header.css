@@ -1,9 +1,10 @@
 .header-container {
   display: flex;
+  justify-content: space-between;
   width: 1100px;
+  color: white;
 }
 
 .header {
   font-size: 3em;
-  color: white;
 }
