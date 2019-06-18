@@ -1,0 +1,19 @@
+.menu-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: solid 2px orange; */
+}
+
+.toggle-box {
+  /* border: solid 2px white; */
+  padding: 0 20px;
+  font-size: 3em;
+  cursor: pointer;
+  transition: color 250ms;
+}
+
+.toggle-box:hover {
+  color: rgba(255, 255, 255, 0.267);
+  transition: color 350ms;
+}
