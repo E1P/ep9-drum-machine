@@ -3,7 +3,7 @@ import "./MenuToggle.css";
 const MenuToggle = ({ handleMenuToggle, visible }) => {
   return (
     <div className="menu-container">
-      <div className="toggle-box" onClick={handleMenuToggle}>
+      <div className={`toggle-box${visible ? " toggled" : ""}`} onClick={handleMenuToggle}>
         info
       </div>
     </div>
