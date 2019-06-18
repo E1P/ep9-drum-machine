@@ -34,7 +34,7 @@ function App() {
     <div className="App">
       <div className="non-desktop">
         <p className="app-text">Desktop only. Sorry.</p>
-        <img src={image} alt="Drum machine" width="90%" />
+        <img border="2px solid grey" src={image} alt="Drum machine" width="90%" />
       </div>
     </div>
   ) : (
