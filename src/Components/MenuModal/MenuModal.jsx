@@ -1,6 +1,7 @@
 import React from "react";
 import "./MenuModal.css";
 import { sounds } from "../../data";
+import { ReactComponent as GithubLogo } from "../../images/github-icon.svg";
 
 const MenuModal = ({ visible }) => {
   return (
@@ -13,7 +14,7 @@ const MenuModal = ({ visible }) => {
           {sounds.map(sound => {
             return (
               <div key={sound.file} className="sampler-outline">
-                {/* {<p>{sound.file.replace("-", " ")}</p>} */}
+                {<p>{sound.file.replace("-", " ")}</p>}
               </div>
             );
           })}
@@ -24,32 +25,34 @@ const MenuModal = ({ visible }) => {
           <div className="button-outline" />
         </div>
         <div className="dm-info">
-          <p className="dm-info-1">
-            Keys:
-            <br />
-            R: Kick
-            <br />
-            T: Snare
-            <br />
-            Y: Hi-Hat
-            <br />
-            F: Open Hi-Hat
-            <br />
-            G: Woodblock
-            <br />
-            H: Cymbal
-            <br />
-            V: Strings
-            <br />
-            B: Stab
-            <br />
-            N: Bass
-          </p>
+          <div className="dm-info-controls">
+            <p className="dm-info-display">Click to toggle between FFT analysis visualisations</p>
+            <p className="dm-info-volume">Hover over and use scrollwheel or trackpad to adjust volume</p>
+            <p className="dm-info-mute">Click to mute/unmute audio</p>
+          </div>
           <p className="dm-info-2">
-            <a href="https://github.com/E1P/ep9-drum-machine" target="_blank" rel="noopener noreferrer">
-              Github Repo
-            </a>
+            Built using:
+            <p>
+              <br />
+              <br />
+              <ul>
+                <li>React.js</li>
+                <br />
+                <li>
+                  <a href="https://tonejs.github.io/" target="_blank" rel="noopener noreferrer">
+                    Tone.js
+                  </a>
+                </li>
+                <br />
+                <li>CSS</li>
+              </ul>
+              <br />
+            </p>
+            <div className="flex-spacer" />
           </p>
+          <a href="https://github.com/E1P/ep9-drum-machine" target="_blank" rel="noopener noreferrer">
+            <GithubLogo height="40" width="40" fill="white" />
+          </a>
         </div>
       </div>
     </div>
