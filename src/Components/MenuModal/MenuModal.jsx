@@ -2,6 +2,7 @@ import React from "react";
 import "./MenuModal.css";
 import { sounds } from "../../data";
 import { ReactComponent as GithubLogo } from "../../images/github-icon.svg";
+import { ReactComponent as LinkedInLogo } from "../../images/iconmonstr-linkedin-3.svg";
 
 const MenuModal = ({ visible }) => {
   return (
@@ -50,9 +51,14 @@ const MenuModal = ({ visible }) => {
             </p>
             <div className="flex-spacer" />
           </p>
-          <a href="https://github.com/E1P/ep9-drum-machine" target="_blank" rel="noopener noreferrer">
-            <GithubLogo height="40" width="40" fill="white" />
-          </a>
+          <div className="dm-info-links-container">
+            <a href="https://github.com/E1P/ep9-drum-machine" target="_blank" rel="noopener noreferrer">
+              <GithubLogo height="40" width="40" fill="white" />
+            </a>
+            <a href="https://uk.linkedin.com/in/ewan-pearce" target="_blank" rel="noopener noreferrer">
+              <LinkedInLogo height="40" width="40" fill="white" />
+            </a>
+          </div>
         </div>
       </div>
     </div>

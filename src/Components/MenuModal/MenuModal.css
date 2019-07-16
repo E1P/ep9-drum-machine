@@ -121,6 +121,12 @@
   text-align: left;
 }
 
+.dm-info-links-container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+}
+
 a:link {
   color: white;
 }
