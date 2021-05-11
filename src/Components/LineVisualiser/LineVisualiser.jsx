@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
-import Tone from "tone";
+import * as Tone from "tone";
 import "./LineVisualiser.css";
 import { calculateAverages } from "../../util-functions";
 
@@ -12,9 +12,13 @@ function LineVisualiser({ enabled, handleVisualiserClick }) {
 
   useEffect(() => {
     if (!waveform) {
-      setWaveform(new Tone.FFT(32));
+      const newWaveform = new Tone.FFT(32);
+      const receiveChannel = new Tone.Channel();
+      receiveChannel.receive("waveform");
+      receiveChannel.connect(newWaveform);
+
+      setWaveform(newWaveform);
     }
-    waveform && waveform.receive("waveform");
   }, [waveform]);
 
   useLayoutEffect(() => {
@@ -22,9 +26,10 @@ function LineVisualiser({ enabled, handleVisualiserClick }) {
     const getValues = () => {
       const newValues = Array.from(waveform.getValue());
       setValues(newValues);
-      savedValues.current = !savedValues.current ? [newValues] : [newValues, ...savedValues.current.slice(0, 4)];
+      savedValues.current = !savedValues.current
+        ? [newValues]
+        : [newValues, ...savedValues.current.slice(0, 4)];
       setValuesArr(savedValues.current);
-      // requestAnimationFrame(getValues);
     };
 
     if (waveform && enabled) animationId = requestAnimationFrame(getValues);
@@ -35,7 +40,7 @@ function LineVisualiser({ enabled, handleVisualiserClick }) {
   }, [waveform, enabled, values]);
 
   useLayoutEffect(() => {
-    const createLineString = arr => {
+    const createLineString = (arr) => {
       return arr
         .map((freq, index) => {
           const y = freq > -99 ? 350 - (Math.floor(freq) + 100) * 3.5 : 344;
@@ -50,26 +55,26 @@ function LineVisualiser({ enabled, handleVisualiserClick }) {
   }, [valuesArr]);
 
   return (
-    <div className="waveform" onClick={handleVisualiserClick}>
-      {!enabled && <p className="visualiser-text">Click to enable audio visualiser</p>}
+    <div className='waveform' onClick={handleVisualiserClick}>
+      {!enabled && <p className='visualiser-text'>Click to enable audio visualiser</p>}
       {enabled && (
-        <div className="svg-container">
-          <svg width="646" height="345">
+        <div className='svg-container'>
+          <svg width='646' height='345'>
             <defs>
-              <linearGradient id="fill-gradient" x1="0" x2="0" y1="1" y2="0">
-                <stop offset="0" stopColor="transparent" />
-                <stop offset="1" stopColor="rgba(179, 0, 0)" />
+              <linearGradient id='fill-gradient' x1='0' x2='0' y1='1' y2='0'>
+                <stop offset='0' stopColor='transparent' />
+                <stop offset='1' stopColor='rgba(179, 0, 0)' />
               </linearGradient>
             </defs>
             <polyline
-              className="polyline-one"
+              className='polyline-one'
               points={freqLine}
-              shapeRendering="auto"
-              fill="url(#fill-gradient)"
-              fillOpacity="0.5"
-              stroke="rgba(179, 0, 0)"
-              strokeWidth="1"
-              strokeOpacity="0.7"
+              shapeRendering='auto'
+              fill='url(#fill-gradient)'
+              fillOpacity='0.5'
+              stroke='rgba(179, 0, 0)'
+              strokeWidth='1'
+              strokeOpacity='0.7'
             />
           </svg>
         </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Tone from "tone";
+import * as Tone from "tone";
 import { initialFFTArray } from "../../data";
 import "./Visualiser.css";
 import FreqBox from "../FreqBox/FreqBox";
@@ -10,9 +10,12 @@ function Visualiser({ enabled, handleVisualiserClick }) {
 
   useEffect(() => {
     if (!waveform) {
-      setWaveform(new Tone.FFT(32));
+      const newWaveform = new Tone.FFT(32);
+      const receiveChannel = new Tone.Channel();
+      receiveChannel.receive("waveform");
+      receiveChannel.connect(newWaveform);
+      setWaveform(newWaveform);
     }
-    waveform && waveform.receive("waveform");
   }, [waveform]);
 
   useEffect(() => {
@@ -20,7 +23,6 @@ function Visualiser({ enabled, handleVisualiserClick }) {
     const getValues = () => {
       const newValues = Array.from(waveform.getValue());
       setValues(newValues);
-      // requestAnimationFrame(getValues);
     };
     if (waveform && enabled) animationId = requestAnimationFrame(getValues);
     if (animationId)
@@ -30,10 +32,10 @@ function Visualiser({ enabled, handleVisualiserClick }) {
   }, [enabled, values, waveform]);
 
   return (
-    <div className="waveform" onClick={handleVisualiserClick}>
-      {!enabled && <p className="visualiser-text">Click to enable audio visualiser</p>}
+    <div className='waveform' onClick={handleVisualiserClick}>
+      {!enabled && <p className='visualiser-text'>Click to enable audio visualiser</p>}
       {enabled && (
-        <div className="visualiser-box">
+        <div className='visualiser-box'>
           {values.map((freq, index) => {
             freq = freq > -99 ? freq : -99;
             return <FreqBox key={index} freq={freq} />;

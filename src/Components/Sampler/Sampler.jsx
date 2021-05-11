@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Tone from "tone";
+import * as Tone from "tone";
 import LevelMeter from "../LevelMeter/LevelMeter";
 import "./Sampler.css";
 
@@ -9,29 +9,39 @@ function Sampler({ file, note, trigger, release }) {
   const [Meter, setMeter] = useState(null);
   const [samplerLoaded, setSamplerLoaded] = useState(false);
   const [depressed, setDepressed] = useState(false);
+  const [channel, setChannel] = useState(null);
 
   useEffect(() => {
     const createSampler = () => {
-      setSampler(new Tone.Sampler({ [note]: `./beat-radar-sounds/${file}.wav` }, setSamplerLoaded(true)).toMaster());
+      setSampler(
+        new Tone.Sampler(
+          { [note]: `./beat-radar-sounds/${file}.wav` },
+          setSamplerLoaded(true)
+        ).toDestination()
+      );
     };
     const connectSampler = () => {
       const meter = new Tone.Meter();
       setMeter(meter);
       Sampler.connect(meter);
-      Sampler.send("waveform", 0);
+      const sendChannel = new Tone.Channel();
+      Sampler.connect(sendChannel);
+      sendChannel.send("waveform");
+      setChannel(sendChannel);
+      // Sampler.set("waveform", 0);
     };
     !samplerLoaded && createSampler();
     samplerLoaded && !Meter && connectSampler();
-  }, [Sampler, Meter, file, note, samplerLoaded]);
+  }, [Sampler, Meter, file, note, samplerLoaded, channel]);
 
   useEffect(() => {
-    const handleKeyDown = event => {
+    const handleKeyDown = (event) => {
       if (event.key === trigger && !event.repeat) {
         Sampler.triggerAttack(note);
         setDepressed(true);
       }
     };
-    const handleKeyUp = event => {
+    const handleKeyUp = (event) => {
       if (event.key === trigger) {
         release && Sampler.triggerRelease(note);
         setDepressed(false);
@@ -45,7 +55,7 @@ function Sampler({ file, note, trigger, release }) {
     };
   }, [Sampler, note, trigger, release]);
 
-  const handleMouseClick = event => {
+  const handleMouseClick = (event) => {
     event.preventDefault();
     setDepressed(!depressed);
     !depressed && Sampler.triggerAttackRelease(note);
@@ -58,7 +68,7 @@ function Sampler({ file, note, trigger, release }) {
   useEffect(() => {
     let animationId;
     const getLevel = () => {
-      const level = Math.trunc(Meter.getLevel());
+      const level = Math.trunc(Meter.getValue());
       if (level > -50) setAmplitude(level);
       else if (amplitude !== -50 && level < -50) setAmplitude(-50);
       animationId = requestAnimationFrame(getLevel);
@@ -75,7 +85,7 @@ function Sampler({ file, note, trigger, release }) {
         onMouseUp={handleMouseClick}
         onMouseLeave={handleMouseLeave}
       >
-        <div className="text-container">
+        <div className='text-container'>
           <p>{`${trigger.toUpperCase()}`}</p>
         </div>
 

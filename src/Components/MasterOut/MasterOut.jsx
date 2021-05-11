@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Tone from "tone";
+import * as Tone from "tone";
 import "./master-out.css";
 import Dial from "../Dial/Dial";
 Tone.context.lookAhead = 0;
@@ -23,32 +23,32 @@ function MasterOut() {
           threshold: -6,
           ratio: 3,
           attack: 0.5,
-          release: 0.1
+          release: 0.1,
         })
       );
       setDisto(
         new Tone.Distortion({
           distortion: 0.9,
-          wet: 0
+          wet: 0,
         })
       );
       setChorus(
         new Tone.Chorus({
           depth: 1,
-          wet: 0
+          wet: 0,
         })
       );
       setPingPongDelay(
         new Tone.PingPongDelay({
           delayTime: 0.05,
           feedback: 0.6,
-          wet: 0
+          wet: 0,
         })
       );
       const verb = new Tone.Reverb({
         preDelay: 0.05,
         decay: 0.9,
-        wet: 0.5
+        wet: 0.5,
       });
       verb.generate().then(() => {
         setReverb(verb);
@@ -72,7 +72,7 @@ function MasterOut() {
   };
 
   const handleMasterWheel = ({ deltaY }) => {
-    const calculateChange = change => {
+    const calculateChange = (change) => {
       const newAmp = masterAmpCurrent + change;
       if (newAmp < -48) return -48;
       if (newAmp > 0) return 0;
@@ -82,9 +82,15 @@ function MasterOut() {
   };
 
   return (
-    <div className="master-box">
-      <Dial name="Volume" handleWheel={handleMasterWheel} min={masterAmpMin} max={masterAmpMax} current={masterAmpCurrent} />
-      <div className="mute-toggle" onClick={handleEnableAudio}>
+    <div className='master-box'>
+      <Dial
+        name='Volume'
+        handleWheel={handleMasterWheel}
+        min={masterAmpMin}
+        max={masterAmpMax}
+        current={masterAmpCurrent}
+      />
+      <div className='mute-toggle' onClick={handleEnableAudio}>
         {audioEnabled ? "Mute" : "Unmute"}
       </div>
     </div>
